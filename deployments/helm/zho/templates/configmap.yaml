@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "zho.fullname" . }}
+{{- if gt (len .Values.app.configs) 0 }}
+data:
+{{- range $key, $value := .Values.app.configs }}
+  {{- if kindIs "map" $value }}
+    {{- range $innerKey, $innerValue := $value }}
+      {{- if kindIs "slice" $innerValue }}
+        {{- (print $.Values.app.envVars.prefix ($key | upper | replace "-" "_") "_" ($innerKey | upper | replace "-" "_") ": " ((join "," $innerValue) | quote)) | nindent 2 }}
+      {{- else }}
+        {{- (print $.Values.app.envVars.prefix ($key | upper | replace "-" "_") "_" ($innerKey | upper | replace "-" "_") ": " ($innerValue | quote)) | nindent 2 }}
+      {{- end }}
+    {{- end }}
+  {{- else if kindIs "slice" $value }}
+    {{- (print $.Values.app.envVars.prefix ($key | upper | replace "-" "_") ": " ((join "," $value) | quote)) | nindent 2 }}
+  {{- else }}
+    {{- (print $.Values.app.envVars.prefix ($key | upper | replace "-" "_") ": " ($value | quote)) | nindent 2 }}
+  {{- end }}
+{{- end }}
+{{- end }}

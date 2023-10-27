@@ -1,0 +1,39 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/*
+Dockerfile.cross
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# editor and IDE paraphernalia
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Extra stuff
+.envrc
+.go/
+.helm/
+.idea/
+.netrc
+.vscode/
+vendor/
+configs/certs
+!configs/certs/.gitkeep
+configs/kubeconfig
+configs/kubernetes-manifests/*-tls.yaml
+tilt_config.json*
+tilt_modules
+kubeconfig
+coverage.out
+.DS_Store

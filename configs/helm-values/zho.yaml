@@ -1,0 +1,8 @@
+---
+replicaCount: 1
+
+clusterRole:
+  rules: []
+
+app:
+  configs: {}
