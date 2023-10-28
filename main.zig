@@ -31,4 +31,7 @@ pub fn main() void {
     std.debug.print("sslConfig.clientKeyFile fields: {s}\n", .{sslConfig.*.clientKeyFile});
     std.debug.print("sslConfig.CACertFile fields: {s}\n", .{sslConfig.*.CACertFile});
     std.debug.print("sslConfig.insecureSkipTlsVerify fields: {d}\n", .{sslConfig.*.insecureSkipTlsVerify});
+
+    std.debug.print("apiKeys: {*}\n", .{apiKeys});
+    std.debug.print("apiKeys.count: {d}\n", .{apiKeys.*.count});
 }
