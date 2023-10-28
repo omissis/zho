@@ -198,8 +198,15 @@ deploy-helm: check-variable-IMAGE_TAG_NAME check-variable-CLUSTER_NAME check-var
 
 LIBWS_VERSION:=$$(brew info libwebsockets --json | jq -r ".[].installed[0].version")
 INCLUDE:=-I./vendor/client-c/kubernetes/include -I./vendor/client-c/kubernetes/model -I./vendor/client-c/kubernetes/api -I./vendor/client-c/kubernetes/config -I$$(brew --prefix)/Cellar/libwebsockets/$(LIBWS_VERSION)
-LIBS:=-L./vendor/client-c/kubernetes/build -lkubernetes -lyaml -lwebsockets -L/usr/local/lib -L$$(brew --prefix)/Cellar/libwebsockets/$(LIBWS_VERSION)/lib
+LIBS:=-lkubernetes -lyaml -lwebsockets -L/usr/local/lib -L$$(brew --prefix)/Cellar/libwebsockets/$(LIBWS_VERSION)/lib
 
-.PHONY : run
+.PHONY: run build-client-c
 run:
-	$${HOME}/bin/zig run main.zig $(INCLUDE) $(LIBS)
+	$(MAKE) build-client-c
+	$${HOME}/bin/zig run src/main.zig $(INCLUDE) $(LIBS)
+
+build:
+	$${HOME}/bin/zig build
+
+build-client-c:
+	sh -c 'cd vendor/client-c/kubernetes/build && make && sudo make install'

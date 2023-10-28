@@ -20,6 +20,11 @@ Dockerfile.cross
 *.swo
 *~
 
+# Zig specific
+
+zig-cache/
+zig-out/
+
 # Extra stuff
 .envrc
 .go/
