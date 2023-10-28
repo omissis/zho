@@ -43,10 +43,7 @@ direnv allow
 # Step 4: install the brew dependencies (MacOS only, for other OSes, please install the dependencies manually)
 make tools-brew
 
-# Step 5: add the zho.dev entries to your /etc/hosts file
-sudo -- sh -c "echo 0.0.0.0 zho.dev >> /etc/hosts"
-
-# Step 6: install kubernetes client-c and it dependencies
+# Step 5: install kubernetes client-c and it dependencies
 # See the readme here: https://github.com/kubernetes-client/c
 
 # Install pre-requisites (MacOS only, for other OSes, please install the dependencies manually)
@@ -71,8 +68,11 @@ make
 sudo make install
 cd ../../../../
 
-# Step 7: start the development environment
+# Step 6: start the development environment
 make dev-up CLUSTER_VERSION=1.28.0
+
+# Step 7: run the program
+make run
 
 # Step 8: stop the development environment
 make dev-down
