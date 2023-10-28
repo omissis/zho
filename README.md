@@ -2,6 +2,8 @@
 
 This is a sample project used to learn how to create an operator using Zig and the kubernetes C client.
 
+⚠️ It is still a work in progress, so don't expect too much from it yet!
+
 ## Quickstart 🚀
 
 Well, kind of quick 😝
