@@ -9,7 +9,7 @@ const c = @cImport({
 });
 
 pub fn main() void {
-    std.debug.print("Zig Kubernetes Operator\n", .{});
+    std.debug.print("ZHO - Zig Hello Operator\n", .{});
 
     var basePath: [*c]u8 = undefined;
 
